@@ -29,7 +29,7 @@ jobs:
       run: |
         # throwing python version to verify its using the right version
         python --version
-        cd /usr/bin/python
+        cd /usr/bin
         ls -la
         #conda env update --file environment.yaml --name base
         #conda activate graydons_env
