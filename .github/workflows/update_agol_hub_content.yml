@@ -31,7 +31,7 @@ jobs:
 
     - name: Configure conda
       run: |
-        conda env update --file environment.yml --name base
+        conda env update --file environment.yaml --name base
         conda activate graydons_env
         
     - name: Run script
