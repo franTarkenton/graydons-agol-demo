@@ -19,9 +19,14 @@ jobs:
     - name: Set up Conda environment
       uses: conda-incubator/setup-miniconda@v2
       with:
-        environment-file: environment.yml
-    - name: Install ArcGIS API for Python
-      run: conda install -c esri arcgis
+        activate-environment: myenv
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+        conda activate myenv
+        conda install --yes -c esri arcgis
+        conda install --yes pandas
     
     - name: Run script
       env:
