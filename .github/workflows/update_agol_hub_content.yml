@@ -2,8 +2,7 @@ name: Update AGOL Hub Content
 
 on:
   push:
-    branches:
-      - [main, kevin-branch]
+    branches: [main, kevin-branch]
   schedule:
     - cron: '30 5 * * 1'
   workflow_dispatch:
