@@ -27,11 +27,8 @@ jobs:
     - name: Install dependencies
       shell: bash
       run: |
-        # throwing python version to verify its using the right version
-        python3 --version
-        sudo update-alternatives --install /usr/bin/python python /opt/hostedtoolcache/Python/3.8.16/x64/bin/python3.8 1
-        python3 --version
         conda env update python=3.8 --file environment.yaml --name graydons_env
+        conda env list
         conda activate graydons_env
         
     - name: Run script
