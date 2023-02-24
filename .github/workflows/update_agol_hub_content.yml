@@ -22,13 +22,15 @@ jobs:
         activate-environment: myenv
         python-version: 3.8
 
-    - name: Install dependencies
-      shell: bash
+    - name: Create Conda environment
       run: |
-        conda init bash
+        conda env create --file environment.yml
+    - name: Activate Conda environment
+      run: |
         conda activate myenv
-        conda install --yes -c esri arcgis
-        conda install --yes pandas
+    - name: Install ArcGIS API for Python
+      run: |
+        conda install -c esri arcgis
         
     - name: Run script
       env:
