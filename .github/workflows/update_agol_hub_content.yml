@@ -24,11 +24,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-        conda init bash
+        conda create --yes --name myenv
         conda activate myenv
         conda install --yes -c esri arcgis
         conda install --yes pandas
-    
+        
     - name: Run script
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
