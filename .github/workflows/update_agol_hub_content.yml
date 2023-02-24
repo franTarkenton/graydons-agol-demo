@@ -20,7 +20,7 @@ jobs:
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: myenv
-        python-version: 3.x
+        python-version: 3.8
 
     - name: Install dependencies
       run: |
