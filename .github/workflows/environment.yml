@@ -1,7 +1,0 @@
-name: my_environment
-channels:
-  - conda-forge
-  - esri
-dependencies:
-  - python=3.8
-  - arcgis
