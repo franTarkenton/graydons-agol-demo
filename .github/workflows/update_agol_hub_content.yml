@@ -28,14 +28,11 @@ jobs:
       shell: bash
       run: |
         # throwing python version to verify its using the right version
-        python --version
-        whereis python3.8
-        cd /usr/bin
-        sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
-        ls -la
-        
-        #conda env update --file environment.yaml --name base
-        #conda activate graydons_env
+        python3 --version
+        sudo update-alternatives --install /usr/bin/python python /opt/hostedtoolcache/Python/3.8.16/x64/bin/python3.8 1
+        python3 --version
+        conda env update --file environment.yaml --name base
+        conda activate graydons_env
         
     - name: Run script
       env:
