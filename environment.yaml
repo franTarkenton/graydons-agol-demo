@@ -1,0 +1,8 @@
+name: graydons_env
+channels:
+  - esri
+  - anaconda
+  - defaults
+dependencies:
+  - arcgis
+  - pandas

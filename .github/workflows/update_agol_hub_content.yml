@@ -3,7 +3,7 @@ name: Update AGOL Hub Content
 on:
   push:
     branches:
-      - "main"
+      - ["main","kevin-branch"]
   schedule:
     - cron: '30 5 * * 1'
   workflow_dispatch:
@@ -14,8 +14,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    
+    - name: Set up Conda environment
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: graydons_env
+        python-version: 3.8
 
-    - name: Install Miniconda
+    - name: Install dependencies
       shell: bash
       run: |
         wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
@@ -26,20 +32,8 @@ jobs:
 
     - name: Configure conda
       run: |
-        conda init bash
-        eval "$(conda shell.bash hook)"
-
-    - name: Create Conda environment
-      run: |
-        conda create --name myenv python=3.8 -y
-        conda activate myenv
-
-    - name: Install ArcGIS API for Python
-      run: |
-        conda install -c esri arcgis -y
-
-    - name: Run Python script
-      run: python myscript.py
+        conda env update --file environment.yml --name base
+        conda activate graydons_env
         
     - name: Run script
       env:
