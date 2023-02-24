@@ -16,14 +16,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Set up Conda environment
+      uses: conda-incubator/setup-miniconda@v2
       with:
-        python-version: 3.8
-    
-    - name: Install dependencies
-      run: |
-        pip install arcgis
+        environment-file: environment.yml
+    - name: Install ArcGIS API for Python
+      run: conda install -c esri arcgis
     
     - name: Run script
       env:
