@@ -9,28 +9,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  update_hub:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    
-    - name: Set up Conda environment
-      uses: conda-incubator/setup-miniconda@v2
-      with:
-        activate-environment: myenv
-        python-version: 3.8
+
+    - name: Install Miniconda
+      shell: bash
+      run: |
+        wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+        bash miniconda.sh -b -p $HOME/miniconda
+        rm miniconda.sh
+        export PATH=$HOME/miniconda/bin:$PATH
+        conda init bash
 
     - name: Create Conda environment
       run: |
-        conda env create --file environment.yml
-    - name: Activate Conda environment
-      run: |
+        conda create --name myenv python=3.8 -y
         conda activate myenv
+
     - name: Install ArcGIS API for Python
       run: |
-        conda install -c esri arcgis
+        conda install -c esri arcgis -y
+
+    - name: Run Python script
+      run: python myscript.py
         
     - name: Run script
       env:
