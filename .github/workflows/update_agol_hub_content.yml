@@ -41,5 +41,7 @@ jobs:
       run: |
         # you may have to activate the environment before running the 
         # python script, and you likley need to say python3 vs just python
+        conda init bash
+        . ~/.bashrc
         conda activate graydons_env
         python3 list_agol_hub_content.py
