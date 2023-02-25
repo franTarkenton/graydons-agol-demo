@@ -29,6 +29,8 @@ jobs:
       run: |
         conda env update python=3.8 --file environment.yaml --name graydons_env
         conda env list
+        conda init bash
+        . ~/.bashrc
         conda activate graydons_env
         
     - name: Run script
