@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       shell: bash
       run: |
-        conda env update python=3.9 --file environment.yaml --name graydons_env
+        conda update python=3.9 --file environment.yaml --name graydons_env
         conda env list
         conda init bash
         . ~/.bashrc
