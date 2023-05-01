@@ -16,18 +16,18 @@ jobs:
 
     - uses: actions/setup-python@v4
       with:
-        python-version: '3.8'
+        python-version: '3.9'
     
     - name: Set up Conda environment
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: graydons_env
-        python-version: 3.8
+        python-version: 3.9
 
     - name: Install dependencies
       shell: bash
       run: |
-        conda env update python=3.8 --file environment.yaml --name graydons_env
+        conda env update python=3.9 --file environment.yaml --name graydons_env
         conda env list
         conda init bash
         . ~/.bashrc
